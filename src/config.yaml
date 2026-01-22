@@ -1,0 +1,78 @@
+# Data Paths
+data:
+  case_file: "../data/2020_data/case2000_BRE_PWL.m"
+  
+  # Actuals
+  nodal_load_file: "../data/2020_data/nodal_load_hourly.mat"
+  solar_file: "../data/2020_data/texas_2020_solar.mat"
+  wind_file: "../data/2020_data/texas_2020_wind.mat"
+  hydro_file: "../data/2020_data/texas_2020_hydro.mat"
+  gendata_file: "../data/2020_data/gendata_case2000_BRE.mat"
+  
+  # Forecasts (for two-settlement market)
+  nodal_load_forecast_file: "../data/2020_forecasts/nodal_load_forecast.mat"
+  solar_forecast_file: "../data/2020_forecasts/solar_forecast.mat"
+  wind_forecast_file: "../data/2020_forecasts/wind_forecast.mat"
+
+# Simulation Settings
+simulation:
+  run_day: 140                    # Day of year (0-indexed)
+  n_hours: 8760                   # Total hours in dataset
+  start_date: "2024-01-01"        # Start date for snapshots
+
+# Transmission Settings
+transmission:
+  relax_line_limits: true        # If true, set all limits to 99999 MW
+
+# Unit Commitment Settings
+unit_commitment:
+  committable_fuels:              # Fuel types subject to UC
+    - coal
+    - nuclear
+    - ng
+  min_size_for_uc: 0              
+  use_initial_conditions: true    
+
+# Ramp Rate Settings
+ramp_rates:
+  enabled: true                   # Enable ramp constraints
+  multiplier: 1.0                 
+  
+  typical:
+    nuclear: 0.05
+    coal: 0.20
+    ng: 0.50
+    hydro: 1.0
+    solar: 1.0
+    wind: 1.0
+
+# Cost Settings
+costs:
+  startup:
+    nuclear: 50000
+    coal: 10000
+    ng: 2000
+
+# Solver Settings
+solver:
+  name: "gurobi"
+  #name: "highs"
+  
+  mip:
+    rel_gap: 0.01                 
+    time_limit: 3600              
+  
+  lp:
+    time_limit: 600               # 10 minutes max
+
+# Output Settings
+output:
+  directory: "results"
+  save_dispatch: true
+  save_lmps: true
+  save_commitment: true
+  save_line_flows: true
+  save_summary: true
+  save_congestion: true
+  save_ramp_analysis: true
+  save_final_state: true
