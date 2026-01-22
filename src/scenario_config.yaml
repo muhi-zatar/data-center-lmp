@@ -1,0 +1,17 @@
+scenario:
+  name: baseline_summer
+  description: No data center - baseline comparison
+  two_settlement: true
+
+simulation:
+  # days: [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+  days: [210]
+  #, 202, 203, 204, 205, 206, 207, 208]
+
+add_loads: []
+add_generators: []
+add_storage: []
+add_lines: []
+modify_generators: []
+modify_lines: []
+disable: {}
