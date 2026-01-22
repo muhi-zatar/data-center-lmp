@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+pypsa
+pyyaml
+matpowercaseframes
+highspy
+gurobipy
+# for plotting
+geopandas
+shapely
+requests
